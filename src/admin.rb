@@ -2,6 +2,8 @@
  require 'sinatra/reloader'
  require 'twitter'
  require 'date'
+ require 'dotenv'
+ Dotenv.load
 
  class Admin < Sinatra::Base
      configure :development do
