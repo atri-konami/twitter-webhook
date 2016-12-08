@@ -3,7 +3,7 @@
  require 'twitter'
  require 'date'
 
- class Main < Sinatra::Base
+ class Admin < Sinatra::Base
      configure :development do
          register Sinatra::Reloader
      end
