@@ -1,5 +1,5 @@
-require './main'
-require './admin'
+require './src/main'
+require './src/admin'
 require './middleware/apikey-checker'
 
 map '/' do 
