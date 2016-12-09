@@ -6,9 +6,9 @@
  Dotenv.load
 
  class Admin < Sinatra::Base
-     configure :development do
-         register Sinatra::Reloader
-     end
+    configure :development do
+        register Sinatra::Reloader
+    end
 
     before do
         @client = Twitter::REST::Client.new do |config|
@@ -19,8 +19,8 @@
         end
     end
 
-     get '/server/health' do
-         @client.update("Server health: OK(#{DateTime.now.to_s})")
-         "ok"
-     end
+    post '/server/health' do
+        @client.update("Server health: #{params[:status]}(#{DateTime.now.to_s})")
+        "ok"
+    end
  end
