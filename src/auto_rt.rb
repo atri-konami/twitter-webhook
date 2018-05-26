@@ -14,7 +14,7 @@ class AutoRetweet < Sinatra::Base
         end
     end
 
-    post '/' do
+    post '/ps4live' do
         data = JSON.parse request.body.read
 
         if data['key'] != ENV['API_KEY']
@@ -22,8 +22,12 @@ class AutoRetweet < Sinatra::Base
         end
 
         begin
-            @client.retweet(data['url'])
+            tweet = @client.status(data['url']);
+            if tweet.text.include? "#PS4live"
+                @client.retweet(tweet)
+            end
         rescue => e
+            STDERR.puts e
             halt 500
         end
 
